@@ -1,12 +1,15 @@
-import { Suspense } from 'react'
-import { NewsList } from '../../components/NewsList'
+import { Suspense } from "react";
+import { NewsList } from "../../components/NewsList";
 
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic";
 
 async function NewsFetcher() {
-  const res = await fetch('/api/news', { next: { revalidate: 3600 } })
-  const items = await res.json()
-  return <NewsList items={items} />
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+  const res = await fetch(`${baseUrl}/api/news`, {
+    next: { revalidate: 3600 },
+  });
+  const items = await res.json();
+  return <NewsList items={items} />;
 }
 
 export default function BlogPage() {
@@ -19,5 +22,5 @@ export default function BlogPage() {
       </Suspense>
       <p className="text-xs text-black/50">Sources: AIB, LeFaso.net, Sidwaya</p>
     </div>
-  )
+  );
 }
