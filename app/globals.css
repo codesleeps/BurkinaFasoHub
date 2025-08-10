@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-burkina-red: #EF3340;
+  --color-burkina-green: #009739;
+  --color-burkina-gold: #FCD116;
+  --color-burkina-dark: #111111;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  color: theme('colors.burkina.dark');
+  background: linear-gradient(180deg, rgba(239,51,64,0.04), rgba(0,151,57,0.04));
+}
+
+.container-responsive {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.btn-primary {
+  @apply inline-flex items-center gap-2 rounded-md bg-burkina-green text-white px-4 py-2 font-semibold shadow-sm hover:bg-emerald-700 transition-colors;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center gap-2 rounded-md bg-burkina-red text-white px-4 py-2 font-semibold shadow-sm hover:bg-red-700 transition-colors;
+}
+
+.card {
+  @apply rounded-xl border border-black/5 bg-white shadow-sm hover:shadow-md transition-shadow;
+}
