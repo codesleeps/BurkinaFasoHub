@@ -1,9 +1,12 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import { useAuth } from "./AuthContext";
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { user, logout } = useAuth();
+
   const navLinks = [
     { href: "/networking", label: "Networking" },
     { href: "/information", label: "Information" },
@@ -43,6 +46,29 @@ export function Navbar() {
               {label}
             </Link>
           ))}
+          {user ? (
+            <div className="flex items-center gap-4">
+              <span className="text-sm">Welcome, {user.username}</span>
+              {user.id === 140 && (
+                <Link
+                  href="/delegate-dashboard"
+                  className="btn-primary text-sm"
+                >
+                  Dashboard
+                </Link>
+              )}
+              <button
+                onClick={logout}
+                className="text-sm hover:text-burkina-green"
+              >
+                Logout
+              </button>
+            </div>
+          ) : (
+            <Link href="/login" className="btn-primary text-sm">
+              Delegate Login
+            </Link>
+          )}
         </nav>
         {/* Hamburger button for mobile */}
         <button
@@ -81,6 +107,37 @@ export function Navbar() {
               {label}
             </Link>
           ))}
+          {user ? (
+            <div className="flex flex-col gap-2 pt-2 border-t border-black/5">
+              <span className="text-sm">Welcome, {user.username}</span>
+              {user.id === 140 && (
+                <Link
+                  href="/delegate-dashboard"
+                  className="btn-primary text-sm"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Dashboard
+                </Link>
+              )}
+              <button
+                onClick={() => {
+                  logout();
+                  setMobileOpen(false);
+                }}
+                className="text-sm hover:text-burkina-green"
+              >
+                Logout
+              </button>
+            </div>
+          ) : (
+            <Link
+              href="/login"
+              className="btn-primary text-sm"
+              onClick={() => setMobileOpen(false)}
+            >
+              Delegate Login
+            </Link>
+          )}
         </nav>
       )}
     </header>
