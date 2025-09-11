@@ -5,7 +5,19 @@ import { useAuth } from "./AuthContext";
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { user, logout } = useAuth();
+
+  // Handle the case when Navbar is used outside of AuthProvider
+  let user = null;
+  let logout = () => {};
+
+  try {
+    const authContext = useAuth();
+    user = authContext.user;
+    logout = authContext.logout;
+  } catch (error) {
+    // Auth context not available, use defaults
+    // This is expected when Navbar is rendered server-side
+  }
 
   const navLinks = [
     { href: "/networking", label: "Networking" },
