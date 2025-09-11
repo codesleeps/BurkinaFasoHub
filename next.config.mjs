@@ -9,6 +9,9 @@ const nextConfig = {
   // Enable export for static HTML generation
   output: "export",
 
+  // Set the base path for GitHub Pages deployment
+  basePath: "/BurkinaFasoHub",
+
   // GitHub Pages requires trailing slashes for proper routing
   trailingSlash: true,
 

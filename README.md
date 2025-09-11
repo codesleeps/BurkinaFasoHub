@@ -11,6 +11,7 @@ A web platform designed to serve the Burkinabé diaspora by providing culturally
 - **Networking Platform**: Connects users within the diaspora community
 - **E-Commerce (Shop)**: Enables product browsing and potential purchases
 - **Technology Insights**: Shares tech-related updates relevant to Burkina Faso
+- **Delegate Authentication**: Secure login for community delegates
 
 ## Getting Started
 
@@ -44,11 +45,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ### Building for Production
 
 ```bash
-# Build the application
+# Build the application (this will generate static files in the 'out' directory)
 npm run build
-
-# Export as static files
-npm run export
 ```
 
 ## Deployment
@@ -63,14 +61,18 @@ This project is configured for deployment to GitHub Pages using GitHub Actions.
 4. Under "Source", select "GitHub Actions"
 5. The deployment workflow will automatically run on every push to the main branch
 
+The site will be accessible at: `https://[username].github.io/BurkinaFasoHub/`
+
+**Note**: Due to the basePath configuration, all URLs are prefixed with `/BurkinaFasoHub/`.
+
 ### Manual Deployment to GitHub Pages
 
 If you prefer to deploy manually:
 
-1. Build and export the project:
+1. Build the project:
 
    ```bash
-   npm run deploy
+   npm run build
    ```
 
 2. Deploy the `out` directory to your GitHub Pages
@@ -113,6 +115,18 @@ AUTH_SECRET=your-secret-key-for-jwt
 
 - Demo delegate login: `delegate140` / `securePassword123`
 - Only delegate with ID 140 can access the dashboard
+
+## Troubleshooting
+
+### 404 Errors on GitHub Pages
+
+If you're experiencing 404 errors on GitHub Pages:
+
+1. Make sure the `basePath` in `next.config.mjs` matches your repository name
+2. Ensure GitHub Pages is configured to use GitHub Actions as the source
+3. Check that the deployment workflow completed successfully
+4. Verify that the site is being served from the correct URL:
+   `https://[username].github.io/BurkinaFasoHub/`
 
 ## Contributing
 
