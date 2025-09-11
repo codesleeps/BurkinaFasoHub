@@ -6,6 +6,13 @@ export const dynamic = "force-dynamic";
 export const revalidate = 3600; // revalidate each hour
 
 export async function GET() {
+  // During build, return empty array to prevent hanging
+  if (process.env.NEXT_PHASE === "phase-production-build") {
+    return new Response(JSON.stringify([]), {
+      headers: { "content-type": "application/json" },
+    });
+  }
+
   const parser = new Parser();
   const items: {
     title: string;

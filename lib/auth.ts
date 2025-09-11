@@ -65,7 +65,7 @@ export async function authenticateUser(username: string, password: string) {
  * Get the current user from the request cookies
  */
 export async function getCurrentUser() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const token = cookieStore.get("auth_token")?.value;
 
   if (!token) return null;

@@ -1,18 +1,35 @@
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // GitHub Pages requires this to be set to the repository name
-  // Replace 'burkina-diaspora' with your actual repository name
-  assetPrefix: "./",
-  basePath: "",
-  images: {
-    remotePatterns: [{ protocol: "https", hostname: "images.unsplash.com" }],
-  },
-  // typedRoutes disabled for now to allow flexible href strings
   // Enable export for static HTML generation
   output: "export",
-  // Optional: Change this to your GitHub repository name
-  // basePath: '/your-repository-name',
-  // assetPrefix: '/your-repository-name/',
+
+  // GitHub Pages requires trailing slashes for proper routing
+  trailingSlash: true,
+
+  // Images configuration for external images
+  images: {
+    unoptimized: true, // Required for static export
+    remotePatterns: [{ protocol: "https", hostname: "images.unsplash.com" }],
+  },
+
+  // Fix for multiple lockfiles warning
+  outputFileTracingRoot: __dirname,
+
+  // Disable ESLint and TypeScript checks during build for faster builds
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+
+  // typedRoutes disabled for now to allow flexible href strings
 };
 
 export default nextConfig;

@@ -4,12 +4,27 @@ import { NewsList } from "../../components/NewsList";
 export const dynamic = "force-dynamic";
 
 async function NewsFetcher() {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
-  const res = await fetch(`${baseUrl}/api/news`, {
-    next: { revalidate: 3600 },
-  });
-  const items = await res.json();
-  return <NewsList items={items} />;
+  // During build, return empty array to prevent hanging
+  if (process.env.NEXT_PHASE === "phase-production-build") {
+    return <NewsList items={[]} />;
+  }
+
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+    const res = await fetch(`${baseUrl}/api/news`, {
+      next: { revalidate: 3600 },
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch news");
+    }
+
+    const items = await res.json();
+    return <NewsList items={items} />;
+  } catch (error) {
+    console.error("Failed to fetch news:", error);
+    return <NewsList items={[]} />;
+  }
 }
 
 export default function BlogPage() {
