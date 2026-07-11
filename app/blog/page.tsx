@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { NewsList } from "../../components/NewsList";
 
-export const dynamic = "force-dynamic";
+// static export - no dynamic
 
 async function NewsFetcher() {
   // During build, return empty array to prevent hanging
