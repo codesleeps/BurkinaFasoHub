@@ -1,157 +1,51 @@
+import Link from 'next/link';
+
 export default function CulturesPage() {
-  const events = [
-    {
-      id: 1,
-      title: "Burkina Faso Cultural Festival",
-      date: "June 15, 2025",
-      location: "Paris, France",
-      description:
-        "Annual celebration of Burkinabé culture with music, dance, and food",
-    },
-    {
-      id: 2,
-      title: "Traditional Music Workshop",
-      date: "July 3, 2025",
-      location: "Montreal, Canada",
-      description: "Learn to play traditional Burkinabé instruments",
-    },
-    {
-      id: 3,
-      title: "Heritage Photography Exhibition",
-      date: "August 20, 2025",
-      location: "New York, USA",
-      description: "Showcasing the beauty of Burkina Faso through photography",
-    },
-  ];
-
-  const traditions = [
-    {
-      id: 1,
-      name: "Masks and Ceremonies",
-      description:
-        "Traditional masks used in various ceremonies and their meanings",
-    },
-    {
-      id: 2,
-      name: "Storytelling (Griot)",
-      description:
-        "The ancient art of oral storytelling and history preservation",
-    },
-    {
-      id: 3,
-      name: "Traditional Clothing",
-      description: "Faso Dan Fani and other traditional garments",
-    },
-    {
-      id: 4,
-      name: "Festivals",
-      description:
-        "Major cultural and religious festivals celebrated in Burkina Faso",
-    },
-  ];
-
-  const recipes = [
-    {
-      id: 1,
-      name: "Riz Gras (Rice with Meat)",
-      difficulty: "Medium",
-      time: "45 mins",
-    },
-    {
-      id: 2,
-      name: "Poulet DG (Chicken DG)",
-      difficulty: "Easy",
-      time: "30 mins",
-    },
-    {
-      id: 3,
-      name: "Tô (Sorghum Porridge)",
-      difficulty: "Hard",
-      time: "60 mins",
-    },
-  ];
-
   return (
-    <div className="space-y-8">
-      <div className="text-center">
-        <h1 className="text-3xl font-bold">Cultural Heritage</h1>
-        <p className="text-black/70 mt-2">
-          Celebrating the rich traditions of Burkina Faso
+    <div className="space-y-16">
+      <section>
+        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">Culture & Heritage</h1>
+        <p className="text-lg text-black/70 max-w-2xl">
+          Celebrating the rich cultural tapestry of Burkina Faso. From Mossi traditions to contemporary arts, explore the heritage that connects us.
         </p>
-      </div>
+      </section>
 
-      <section className="card p-6">
-        <h2 className="text-2xl font-semibold mb-4">Upcoming Events</h2>
-        <p className="text-black/70 mb-6">
-          Join us in celebrating Burkinabé culture around the world
-        </p>
-
-        <div className="space-y-4">
-          {events.map((event) => (
-            <div
-              key={event.id}
-              className="border border-black/10 rounded-lg p-4 md:flex md:items-center md:justify-between"
-            >
-              <div>
-                <h3 className="font-semibold text-lg">{event.title}</h3>
-                <p className="text-sm text-black/60 mt-1">
-                  {event.date} • {event.location}
-                </p>
-                <p className="mt-2 text-black/80">{event.description}</p>
-              </div>
-              <button className="mt-3 md:mt-0 btn-primary text-sm">RSVP</button>
-            </div>
-          ))}
+      <section className="grid md:grid-cols-2 gap-8">
+        <div className="relative rounded-2xl overflow-hidden h-80 bg-gradient-to-br from-red-700 to-yellow-600 p-8 flex flex-col justify-end text-white">
+          <span className="text-sm font-semibold bg-white/20 backdrop-blur px-3 py-1 rounded-full inline-block w-fit mb-3">Heritage</span>
+          <h2 className="text-2xl font-bold mb-2">Traditional Festivals</h2>
+          <p className="text-white/80">FESPACO, SIAO, Nuits Atypiques de Koudougou — the festivals that define Burkinabé identity on the world stage.</p>
+        </div>
+        <div className="relative rounded-2xl overflow-hidden h-80 bg-gradient-to-br from-green-800 to-green-500 p-8 flex flex-col justify-end text-white">
+          <span className="text-sm font-semibold bg-white/20 backdrop-blur px-3 py-1 rounded-full inline-block w-fit mb-3">Arts</span>
+          <h2 className="text-2xl font-bold mb-2">Contemporary Arts Scene</h2>
+          <p className="text-white/80">From Ouagadougou galleries to international exhibitions — Burkinabé artists making waves in visual arts, sculpture, and film.</p>
         </div>
       </section>
 
-      <section className="card p-6">
-        <h2 className="text-2xl font-semibold mb-4">Cultural Traditions</h2>
-        <p className="text-black/70 mb-6">
-          Explore the rich heritage and traditions of Burkina Faso
-        </p>
-
-        <div className="grid md:grid-cols-2 gap-6">
-          {traditions.map((tradition) => (
-            <div
-              key={tradition.id}
-              className="border border-black/10 rounded-lg p-4"
-            >
-              <h3 className="font-semibold text-lg">{tradition.name}</h3>
-              <p className="mt-2 text-black/80">{tradition.description}</p>
-              <button className="mt-3 text-sm text-burkina-green font-medium">
-                Learn More
-              </button>
-            </div>
-          ))}
-        </div>
+      <section className="grid md:grid-cols-3 gap-6">
+        {[
+          { title: 'Languages', desc: 'Mooré, Dioula, Fulfuldé and more. Resources for learning and preserving Burkina Faso\'s 60+ languages.', icon: '🗣️' },
+          { title: 'Cuisine', desc: 'Recipes and stories behind riz gras, tô, poulet bicyclette, and the flavors of Burkina Faso.', icon: '🍚' },
+          { title: 'Music & Dance', desc: 'From traditional balafon to modern coupé-décalé. The rhythms that move Burkina Faso.', icon: '🥁' },
+          { title: 'Fashion & Textiles', desc: 'Faso Dan Fani, bogolan, and contemporary Burkinabé fashion designers on the global stage.', icon: '👘' },
+          { title: 'Storytelling', desc: 'Oral traditions, griot histories, and modern Burkinabé literature and cinema.', icon: '📖' },
+          { title: 'Cultural Calendar', desc: 'Upcoming events, celebrations, and cultural gatherings in the diaspora and at home.', icon: '📅' },
+        ].map((item) => (
+          <div key={item.title} className="p-6 rounded-xl border border-black/10 bg-white hover:shadow-md transition-shadow text-center">
+            <span className="text-4xl block mb-3">{item.icon}</span>
+            <h3 className="text-lg font-bold mb-2">{item.title}</h3>
+            <p className="text-sm text-black/60">{item.desc}</p>
+          </div>
+        ))}
       </section>
 
-      <section className="card p-6">
-        <h2 className="text-2xl font-semibold mb-4">Traditional Recipes</h2>
-        <p className="text-black/70 mb-6">
-          Cook authentic Burkinabé dishes in your own kitchen
-        </p>
-
-        <div className="grid md:grid-cols-3 gap-4">
-          {recipes.map((recipe) => (
-            <div
-              key={recipe.id}
-              className="border border-black/10 rounded-lg p-4"
-            >
-              <h3 className="font-semibold">{recipe.name}</h3>
-              <div className="mt-3 flex justify-between text-sm">
-                <span className="bg-burkina-green/10 text-burkina-green px-2 py-1 rounded">
-                  {recipe.difficulty}
-                </span>
-                <span className="text-black/60">{recipe.time}</span>
-              </div>
-              <button className="mt-4 w-full btn-secondary text-sm">
-                View Recipe
-              </button>
-            </div>
-          ))}
-        </div>
+      <section className="bg-red-50 border border-red-200 rounded-2xl p-8 text-center">
+        <h2 className="text-2xl font-bold mb-3">🇧🇫 Share Your Story</h2>
+        <p className="text-black/70 mb-4 max-w-xl mx-auto">Every Burkinabé has a story. Submit your cultural experience, family tradition, or artistic work to be featured.</p>
+        <Link href="#" className="inline-block bg-red-600 text-white font-bold px-6 py-3 rounded-lg hover:bg-red-700 transition-colors">
+          Contribute
+        </Link>
       </section>
     </div>
   );

@@ -1,129 +1,40 @@
+import Link from 'next/link';
+
 export default function NetworkingPage() {
-  const sampleGroups = [
-    {
-      id: 1,
-      name: "Burkinabé Professionals - Paris",
-      members: 124,
-      description: "Networking for professionals in the Paris area",
-    },
-    {
-      id: 2,
-      name: "Students & Young Professionals - NYC",
-      members: 87,
-      description:
-        "Support network for students and young professionals in New York",
-    },
-    {
-      id: 3,
-      name: "Artists & Creatives - Berlin",
-      members: 42,
-      description: "Community for Burkinabé artists and creatives in Berlin",
-    },
-    {
-      id: 4,
-      name: "Tech Enthusiasts - Montreal",
-      members: 65,
-      description: "Technology and innovation networking group",
-    },
-  ];
-
-  const sampleOpportunities = [
-    {
-      id: 1,
-      title: "Internship at Local NGO",
-      company: "Burkina Development Initiative",
-      location: "Ouagadougou",
-      type: "Internship",
-    },
-    {
-      id: 2,
-      title: "Cultural Event Coordinator",
-      company: "Diaspora Cultural Center",
-      location: "Abidjan",
-      type: "Part-time",
-    },
-    {
-      id: 3,
-      title: "Remote Software Developer",
-      company: "TechInBurkina",
-      location: "Remote",
-      type: "Full-time",
-    },
-  ];
-
   return (
-    <div className="space-y-8">
-      <div className="text-center">
-        <h1 className="text-3xl font-bold">Networking</h1>
-        <p className="text-black/70 mt-2">
-          Connect with fellow Burkinabé around the world
+    <div className="space-y-16">
+      <section>
+        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">Diaspora Networking</h1>
+        <p className="text-lg text-black/70 max-w-2xl">
+          Connect with fellow Burkinabé across the globe. Build professional relationships, find mentors, join community groups, and grow your network.
         </p>
-      </div>
-
-      <section className="card p-6">
-        <h2 className="text-2xl font-semibold mb-4">
-          Find Your Local Community
-        </h2>
-        <p className="text-black/70 mb-6">
-          Join existing groups or create your own to connect with other members
-          of the Burkinabé diaspora in your area.
-        </p>
-
-        <div className="grid md:grid-cols-2 gap-6">
-          {sampleGroups.map((group) => (
-            <div
-              key={group.id}
-              className="border border-black/10 rounded-lg p-4 hover:shadow-md transition-shadow"
-            >
-              <h3 className="font-semibold text-lg">{group.name}</h3>
-              <p className="text-sm text-black/60 mt-1">
-                {group.members} members
-              </p>
-              <p className="mt-2 text-black/80">{group.description}</p>
-              <button className="mt-3 btn-primary text-sm">Join Group</button>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-6">
-          <button className="btn-secondary">Create New Group</button>
-        </div>
       </section>
 
-      <section className="card p-6">
-        <h2 className="text-2xl font-semibold mb-4">Opportunities</h2>
-        <p className="text-black/70 mb-6">
-          Find jobs, internships, and volunteer opportunities within our
-          community.
+      <section className="grid md:grid-cols-3 gap-6">
+        {[
+          { title: 'Professional Directory', desc: 'Find and connect with Burkinabé professionals worldwide. Browse by industry, location, or expertise.', icon: '👥', href: '#' },
+          { title: 'Community Groups', desc: 'Join regional and interest-based groups. From Ouagadougou to New York, find your community.', icon: '🏘️', href: '#' },
+          { title: 'Mentorship Program', desc: 'Give back or get guidance. Connect experienced professionals with the next generation of Burkinabé leaders.', icon: '🤝', href: '#' },
+          { title: 'Business Network', desc: 'B2B connections for Burkinabé entrepreneurs. Find suppliers, partners, and clients across the diaspora.', icon: '💼', href: '#' },
+          { title: 'Events & Meetups', desc: 'In-person and virtual gatherings. Networking mixers, cultural celebrations, and professional conferences.', icon: '📅', href: '#' },
+          { title: 'Job Board', desc: 'Opportunities for Burkinabé talent. Remote, local, and international positions from trusted employers.', icon: '💼', href: '#' },
+        ].map((item) => (
+          <Link key={item.title} href={item.href} className="group block p-6 rounded-xl border border-black/10 hover:border-green-600/30 hover:shadow-md transition-all bg-white">
+            <span className="text-3xl mb-3 block">{item.icon}</span>
+            <h3 className="text-lg font-bold mb-2 group-hover:text-green-700">{item.title}</h3>
+            <p className="text-sm text-black/60">{item.desc}</p>
+          </Link>
+        ))}
+      </section>
+
+      <section className="bg-gradient-to-r from-red-600 via-yellow-500 to-green-600 rounded-2xl p-8 md:p-12 text-white">
+        <h2 className="text-2xl md:text-3xl font-bold mb-4">Join the Burkina Diaspora Network</h2>
+        <p className="text-white/90 mb-6 max-w-xl">
+          Over 5,000 Burkinabé across 30+ countries are already connecting. Create your profile, join discussions, and be part of something bigger.
         </p>
-
-        <div className="space-y-4">
-          {sampleOpportunities.map((opportunity) => (
-            <div
-              key={opportunity.id}
-              className="border border-black/10 rounded-lg p-4 flex flex-col sm:flex-row sm:items-center justify-between"
-            >
-              <div>
-                <h3 className="font-semibold">{opportunity.title}</h3>
-                <p className="text-sm text-black/60 mt-1">
-                  {opportunity.company} • {opportunity.location}
-                </p>
-              </div>
-              <div className="mt-2 sm:mt-0 flex items-center gap-3">
-                <span className="text-xs bg-burkina-green/10 text-burkina-green px-2 py-1 rounded">
-                  {opportunity.type}
-                </span>
-                <button className="text-sm text-burkina-green font-medium">
-                  Apply
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-6">
-          <button className="btn-secondary">View All Opportunities</button>
-        </div>
+        <Link href="/login" className="inline-block bg-white text-black font-bold px-6 py-3 rounded-lg hover:bg-yellow-100 transition-colors">
+          Sign Up Free
+        </Link>
       </section>
     </div>
   );

@@ -1,173 +1,47 @@
+import Link from 'next/link';
+
 export default function EducationPage() {
-  const courses = [
-    {
-      id: 1,
-      title: "French Language for Beginners",
-      provider: "Diaspora Language Institute",
-      level: "Beginner",
-      duration: "8 weeks",
-    },
-    {
-      id: 2,
-      title: "Digital Marketing Fundamentals",
-      provider: "TechInBurkina",
-      level: "Intermediate",
-      duration: "6 weeks",
-    },
-    {
-      id: 3,
-      title: "Traditional Crafts Workshop",
-      provider: "Cultural Heritage Center",
-      level: "All levels",
-      duration: "4 sessions",
-    },
-  ];
-
-  const scholarships = [
-    {
-      id: 1,
-      name: "Burkina Faso Government Scholarship",
-      level: "University",
-      deadline: "March 15, 2025",
-      amount: "Full tuition + living stipend",
-    },
-    {
-      id: 2,
-      name: "Diaspora Education Fund",
-      level: "High School/University",
-      deadline: "May 30, 2025",
-      amount: "$2,000",
-    },
-    {
-      id: 3,
-      name: "Women in STEM Scholarship",
-      level: "University",
-      deadline: "April 1, 2025",
-      amount: "$5,000",
-    },
-  ];
-
-  const mentoring = [
-    {
-      id: 1,
-      name: "Professional Career Guidance",
-      mentor: "Aminata Diallo",
-      field: "International Business",
-      availability: "Monthly sessions",
-    },
-    {
-      id: 2,
-      name: "University Application Support",
-      mentor: "Jean-Baptiste Ouédraogo",
-      field: "Engineering",
-      availability: "Bi-weekly sessions",
-    },
-    {
-      id: 3,
-      name: "Entrepreneurship Mentorship",
-      mentor: "Fatoumata Konaté",
-      field: "Social Enterprise",
-      availability: "Flexible schedule",
-    },
-  ];
-
   return (
-    <div className="space-y-8">
-      <div className="text-center">
-        <h1 className="text-3xl font-bold">Education & Learning</h1>
-        <p className="text-black/70 mt-2">
-          Expand your knowledge and skills with our educational resources
+    <div className="space-y-16">
+      <section>
+        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">Education & Opportunities</h1>
+        <p className="text-lg text-black/70 max-w-2xl">
+          Empowering the Burkinabé diaspora through education. Scholarships, online courses, professional development, and mentoring for all ages.
         </p>
-      </div>
-
-      <section className="card p-6">
-        <h2 className="text-2xl font-semibold mb-4">Online Courses</h2>
-        <p className="text-black/70 mb-6">
-          Enhance your skills with courses designed for the diaspora community
-        </p>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          {courses.map((course) => (
-            <div
-              key={course.id}
-              className="border border-black/10 rounded-lg p-4"
-            >
-              <h3 className="font-semibold text-lg">{course.title}</h3>
-              <p className="text-sm text-black/60 mt-1">{course.provider}</p>
-              <div className="mt-3 flex justify-between text-sm">
-                <span className="bg-burkina-green/10 text-burkina-green px-2 py-1 rounded">
-                  {course.level}
-                </span>
-                <span className="text-black/60">{course.duration}</span>
-              </div>
-              <button className="mt-4 w-full btn-primary text-sm">
-                Enroll Now
-              </button>
-            </div>
-          ))}
-        </div>
       </section>
 
-      <section className="card p-6">
-        <h2 className="text-2xl font-semibold mb-4">
-          Scholarship Opportunities
-        </h2>
-        <p className="text-black/70 mb-6">
-          Financial support for continuing your education
-        </p>
-
-        <div className="space-y-4">
-          {scholarships.map((scholarship) => (
-            <div
-              key={scholarship.id}
-              className="border border-black/10 rounded-lg p-4 md:flex md:items-center md:justify-between"
-            >
-              <div>
-                <h3 className="font-semibold text-lg">{scholarship.name}</h3>
-                <p className="text-sm text-black/60 mt-1">
-                  Level: {scholarship.level}
-                </p>
-                <p className="mt-2">
-                  <span className="font-medium">Amount:</span>{" "}
-                  {scholarship.amount}
-                </p>
-              </div>
-              <div className="mt-3 md:mt-0 text-right">
-                <p className="text-sm text-black/60">
-                  Deadline: {scholarship.deadline}
-                </p>
-                <button className="mt-2 btn-secondary text-sm">Apply</button>
-              </div>
-            </div>
-          ))}
-        </div>
+      <section className="grid md:grid-cols-3 gap-6">
+        {[
+          { title: 'Scholarships', desc: 'Undergraduate, masters, and PhD funding opportunities for Burkinabé students worldwide. Updated monthly.', count: '15+ active', icon: '🎓' },
+          { title: 'Online Learning', desc: 'Free and affordable courses in tech, business, languages, and trades. Learn at your own pace from anywhere.', count: '100+ courses', icon: '💻' },
+          { title: 'Professional Certifications', desc: 'Industry-recognized certifications to boost your career. IT, project management, healthcare, and more.', count: '25+ paths', icon: '📜' },
+          { title: 'Language Programs', desc: 'English, French, Arabic, and local language courses. Break language barriers in your new home.', count: '10+ languages', icon: '🌍' },
+          { title: 'Youth Programs', desc: 'STEM camps, leadership development, and exchange programs for young Burkinabé aged 13-25.', count: 'All ages', icon: '🧒' },
+          { title: 'Mentorship', desc: 'One-on-one guidance from experienced Burkinabé professionals. Career advice, CV reviews, and industry insights.', count: '200+ mentors', icon: '👨‍🏫' },
+        ].map((item) => (
+          <div key={item.title} className="group p-6 rounded-xl border border-black/10 bg-white hover:border-green-600/30 hover:shadow-md transition-all">
+            <span className="text-3xl block mb-3">{item.icon}</span>
+            <h3 className="text-lg font-bold mb-1 group-hover:text-green-700">{item.title}</h3>
+            <span className="text-xs font-semibold text-green-600 bg-green-50 px-2 py-1 rounded-full">{item.count}</span>
+            <p className="text-sm text-black/60 mt-2">{item.desc}</p>
+          </div>
+        ))}
       </section>
 
-      <section className="card p-6">
-        <h2 className="text-2xl font-semibold mb-4">Mentoring Programs</h2>
-        <p className="text-black/70 mb-6">
-          Connect with experienced professionals in your field of interest
-        </p>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          {mentoring.map((mentor) => (
-            <div
-              key={mentor.id}
-              className="border border-black/10 rounded-lg p-4"
-            >
-              <h3 className="font-semibold text-lg">{mentor.name}</h3>
-              <p className="text-sm text-black/60 mt-1">
-                Mentor: {mentor.mentor}
-              </p>
-              <p className="mt-2 text-black/80">{mentor.field}</p>
-              <p className="mt-2 text-sm text-black/60">
-                {mentor.availability}
-              </p>
-              <button className="mt-4 w-full btn-primary text-sm">
-                Request Mentorship
-              </button>
-            </div>
-          ))}
+      <section className="bg-gradient-to-r from-green-700 to-green-500 rounded-2xl p-8 md:p-12 text-white">
+        <div className="max-w-2xl">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4">🎓 Featured: Burkina Government Scholarship Program</h2>
+          <p className="text-white/90 mb-6">
+            The Ministry of Higher Education offers annual scholarships for diaspora students. Applications open every March for the September intake.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="#" className="inline-block bg-white text-green-800 font-bold px-6 py-3 rounded-lg hover:bg-green-50 transition-colors">
+              Learn More
+            </Link>
+            <Link href="#" className="inline-block border-2 border-white text-white font-bold px-6 py-3 rounded-lg hover:bg-white/10 transition-colors">
+              Browse All Scholarships
+            </Link>
+          </div>
         </div>
       </section>
     </div>
