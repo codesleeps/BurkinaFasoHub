@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../../components/AuthContext";
 
@@ -112,6 +113,9 @@ export default function LoginPage() {
 
       <div className="text-center text-sm text-black/60">
         <p>Demo credentials: delegate140 / securePassword123</p>
+        <p className="text-sm text-black/50">
+          Not a delegate? <Link href="/signup" className="text-green-700 font-semibold hover:underline">Join the community</Link>
+        </p>
       </div>
     </div>
   );
